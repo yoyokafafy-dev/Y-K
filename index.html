@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y&K Perfumes - متجر العطور الفاخرة</title>
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #141414;
+            --accent-gold: #d4af37;
+            --gold-hover: #f3e5ab;
+            --text-light: #f5f5f5;
+            --text-muted: #a0a0a0;
+            --border-color: #2a2a2a;
+            --danger: #e74c3c;
+            --success: #2ecc71;
+            --whatsapp-green: #25D366;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            background: rgba(11, 11, 11, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--accent-gold);
+        }
+
+        .brand-logo img {
+            height: 45px;
+            border-radius: 6px;
+        }
+
+        .brand-logo h2 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-gold {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-hover);
+        }
+
+        .btn-danger {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background: var(--danger);
+            color: #fff;
+        }
+
+        /* Header / Banner */
+        header {
+            text-align: center;
+            padding: 4rem 1rem 3rem 1rem;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(11, 11, 11, 1) 70%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Admin Controls Header Button */
+        .admin-nav-bar {
+            display: none;
+            margin-bottom: 2rem;
+            background: #1a1810;
+            border: 1px solid var(--accent-gold);
+            padding: 1rem;
+            border-radius: 8px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* WhatsApp Contact Section */
+        .whatsapp-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .whatsapp-section h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .whatsapp-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn-whatsapp {
+            background: var(--whatsapp-green);
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+            color: #fff;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--accent-gold);
+            margin: 10px auto 0 auto;
+        }
+
+        /* Perfume Grid */
+        .perfume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .perfume-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .perfume-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .perfume-img-wrapper {
+            width: 100%;
+            height: 280px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .perfume-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .perfume-details {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .perfume-title {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .perfume-actions {
+            margin-top: auto;
+        }
+
+        .empty-msg {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 4rem 1rem;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-gold);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 550px;
+            padding: 2rem;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #fff;
+        }
+
+        .modal-title {
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            background: #000;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        /* Badge for Admin Messages Count */
+        .badge {
+            background: var(--danger);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+
+        /* Admin Messages List */
+        .message-item {
+            background: #1a1a1a;
+            border-right: 4px solid var(--accent-gold);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .message-item h4 {
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .message-item p {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .message-item .time {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Option Switcher for Admin Image Upload */
+        .img-option-switch {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .img-option-switch label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="brand-logo">
+            <!-- SVG Logo for Y&K -->
+            <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100" height="100" rx="15" fill="#141414"/>
+                <path d="M30 25L50 55L70 25M50 55V75" stroke="#D4AF37" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M40 45H60" stroke="#D4AF37" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <h2>Y&K</h2>
+        </a>
+        <div class="auth-buttons" id="authNav">
+            <button class="btn" onclick="openModal('loginModal')">تسجيل الدخول</button>
+            <button class="btn btn-gold" onclick="openModal('registerModal')">حساب جديد</button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>هذه تركيبات برفانات جديده و تم صناعها من براند بتاعنا /Y&K</h1>
+        <p style="color: var(--text-muted);">عطور فاخرة تمنحك الثقة والأناقة في كل لحظة</p>
+    </header>
+
+    <div class="container">
+        <!-- Admin Bar (Hidden by Default) -->
+        <div class="admin-nav-bar" id="adminNavBar">
+            <div>
+                <span style="color: var(--accent-gold); font-weight: bold;"><i class="fa-solid fa-user-shield"></i> لوحة تحكم الأدمن</span>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-gold" onclick="openModal('addPerfumeModal')"><i class="fa-solid fa-plus"></i> إضافة برفان</button>
+                <button class="btn" onclick="openModal('adminMessagesModal')">
+                    <i class="fa-solid fa-envelope"></i> الرسائل <span class="badge" id="msgBadge">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- WhatsApp Buttons Section -->
+        <div class="whatsapp-section">
+            <h3>تواصل معنا مباشرة عبر واتساب</h3>
+            <div class="whatsapp-buttons">
+                <a href="https://wa.me/201114588834" target="_blank" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp fa-xl"></i> لمعرفة مزيد اضغط هنا رقم أول
+                </a>
+                <a href="https://wa.me/201006263486" target="_blank" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp fa-xl"></i> لمعرفة مزيد اضغط هنا رقم ثاني
+                </a>
+                <a href="https://wa.me/201003724247" target="_blank" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp fa-xl"></i> لمعرفة مزيد اضغط هنا رقم ثالث
+                </a>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <h2 class="section-title">مجموعة العطور</h2>
+        <div class="perfume-grid" id="perfumeGrid">
+            <div class="empty-msg" id="loadingMsg">جاري تحميل تشكيلة العطور...</div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+            <h3 class="modal-title">تسجيل الدخول</h3>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" class="form-control" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" class="form-control" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%;">دخول</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('registerModal')">&times;</span>
+            <h3 class="modal-title">إنشاء حساب جديد</h3>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" class="form-control" id="regName" required>
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" class="form-control" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" class="form-control" id="regPassword" required>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%;">تسجيل</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Perfume Modal (Admin Only) -->
+    <div class="modal" id="addPerfumeModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('addPerfumeModal')">&times;</span>
+            <h3 class="modal-title">إضافة برفان جديد</h3>
+            <form id="addPerfumeForm">
+                <div class="form-group">
+                    <label>اسم البرفان</label>
+                    <input type="text" class="form-control" id="perfumeName" required placeholder="مثال: Y&K Black Luxe">
+                </div>
+                
+                <div class="form-group">
+                    <label>طريقة إضافة الصورة:</label>
+                    <div class="img-option-switch">
+                        <label><input type="radio" name="imgSource" value="url" checked onchange="toggleImgInput()"> رابط صورة (URL)</label>
+                        <label><input type="radio" name="imgSource" value="file" onchange="toggleImgInput()"> رفع من الجهاز</label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="urlInputGroup">
+                    <label>رابط الصورة (URL)</label>
+                    <input type="url" class="form-control" id="perfumeImgUrl" placeholder="https://example.com/image.jpg">
+                </div>
+
+                <div class="form-group" id="fileInputGroup" style="display: none;">
+                    <label>اختر صورة من جهازك</label>
+                    <input type="file" class="form-control" id="perfumeImgFile" accept="image/*">
+                </div>
+
+                <button type="submit" class="btn btn-gold" style="width: 100%;">إضافة البرفان الآن</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Buy Modal -->
+    <div class="modal" id="buyModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('buyModal')">&times;</span>
+            <h3 class="modal-title">طلب شراء برفان: <span id="buyPerfumeTitle" style="color:#fff;"></span></h3>
+            <form id="buyForm">
+                <input type="hidden" id="buyPerfumeId">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" class="form-control" id="customerName" required placeholder="أدخل اسمك الكامل">
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" class="form-control" id="customerPhone" required placeholder="أدخل رقم هاتفك">
+                </div>
+                <div class="form-group">
+                    <label>العنوان التفصيلي</label>
+                    <textarea class="form-control" id="customerAddress" rows="3" required placeholder="أدخل عنوان السكن للتوصيل"></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%;">تأكيد الطلب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Messages Modal (Admin Only) -->
+    <div class="modal" id="adminMessagesModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('adminMessagesModal')">&times;</span>
+            <h3 class="modal-title">طلبات الشراء الواردة</h3>
+            <div id="adminMessagesList">
+                <p style="text-align: center; color: var(--text-muted);">جاري تحميل الطلبات...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-analytics.js";
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword, 
+            signOut, 
+            onAuthStateChanged 
+        } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+        import { 
+            getFirestore, 
+            collection, 
+            addDoc, 
+            getDocs, 
+            onSnapshot, 
+            query, 
+            orderBy, 
+            doc, 
+            setDoc, 
+            getDoc,
+            serverTimestamp 
+        } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDO0--eVkQmN3YYtrKbmBdk7r_VKfQaYF8",
+            authDomain: "yk-yaseerkafafy.firebaseapp.com",
+            projectId: "yk-yaseerkafafy",
+            storageBucket: "yk-yaseerkafafy.firebasestorage.app",
+            messagingSenderId: "113522904163",
+            appId: "1:113522904163:web:7f4029df8585db39973c56",
+            measurementId: "G-R5HHP07T3Q"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let currentUser = null;
+        let isAdmin = false;
+
+        // Toggle Image Input Types
+        window.toggleImgInput = function() {
+            const option = document.querySelector('input[name="imgSource"]:checked').value;
+            if(option === 'url') {
+                document.getElementById('urlInputGroup').style.display = 'block';
+                document.getElementById('fileInputGroup').style.display = 'none';
+            } else {
+                document.getElementById('urlInputGroup').style.display = 'none';
+                document.getElementById('fileInputGroup').style.display = 'block';
+            }
+        };
+
+        // UI Helpers
+        window.openModal = (id) => document.getElementById(id).classList.add('active');
+        window.closeModal = (id) => document.getElementById(id).classList.remove('active');
+
+        // Auth State Handler
+        onAuthStateChanged(auth, async (user) => {
+            const authNav = document.getElementById('authNav');
+            const adminBar = document.getElementById('adminNavBar');
+
+            if (user) {
+                currentUser = user;
+                const userDocRef = doc(db, "users", user.uid);
+                const userDoc = await getDoc(userDocRef);
+
+                if (userDoc.exists() && userDoc.data().role === 'admin') {
+                    isAdmin = true;
+                    adminBar.style.display = 'flex';
+                    listenToOrders();
+                } else {
+                    isAdmin = false;
+                    adminBar.style.display = 'none';
+                }
+
+                authNav.innerHTML = `
+                    <span style="color:var(--accent-gold);">أهلاً، ${userDoc.exists() ? userDoc.data().name : 'بالعضو'}</span>
+                    <button class="btn btn-danger" id="logoutBtn">خروج</button>
+                `;
+                document.getElementById('logoutBtn').addEventListener('click', () => signOut(auth));
+            } else {
+                currentUser = null;
+                isAdmin = false;
+                adminBar.style.display = 'none';
+                authNav.innerHTML = `
+                    <button class="btn" onclick="openModal('loginModal')">تسجيل الدخول</button>
+                    <button class="btn btn-gold" onclick="openModal('registerModal')">حساب جديد</button>
+                `;
+            }
+        });
+
+        // Register Account (First user becomes admin)
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+
+            try {
+                const usersSnap = await getDocs(collection(db, "users"));
+                const isFirstUser = usersSnap.empty;
+
+                const res = await createUserWithEmailAndPassword(auth, email, password);
+                const role = isFirstUser ? 'admin' : 'user';
+
+                await setDoc(doc(db, "users", res.user.uid), {
+                    name: name,
+                    email: email,
+                    role: role,
+                    createdAt: serverTimestamp()
+                });
+
+                closeModal('registerModal');
+                alert(isFirstUser ? 'تم إنشاء الحساب بنجاح! أنت الآن الأدمن الرئيسي للموقع.' : 'تم إنشاء الحساب بنجاح!');
+            } catch (err) {
+                alert('خطأ أثناء التسجيل: ' + err.message);
+            }
+        });
+
+        // Login Form
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                closeModal('loginModal');
+            } catch (err) {
+                alert('خطأ تسجيل الدخول: ' + err.message);
+            }
+        });
+
+        // Convert File to Base64 String
+        const fileToBase64 = (file) => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+        });
+
+        // Add Perfume (Admin Only)
+        document.getElementById('addPerfumeForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!isAdmin) return alert('غير مسموح لك بإجراء هذه العملية.');
+
+            const name = document.getElementById('perfumeName').value;
+            const imgOption = document.querySelector('input[name="imgSource"]:checked').value;
+            let imgUrl = '';
+
+            try {
+                if(imgOption === 'url') {
+                    imgUrl = document.getElementById('perfumeImgUrl').value;
+                    if(!imgUrl) return alert('يرجى إدخال رابط الصورة');
+                } else {
+                    const fileInput = document.getElementById('perfumeImgFile');
+                    if(fileInput.files.length === 0) return alert('يرجى اختيار صورة من الجهاز');
+                    imgUrl = await fileToBase64(fileInput.files[0]);
+                }
+
+                await addDoc(collection(db, "perfumes"), {
+                    name: name,
+                    imgUrl: imgUrl,
+                    createdAt: serverTimestamp()
+                });
+
+                closeModal('addPerfumeModal');
+                document.getElementById('addPerfumeForm').reset();
+                toggleImgInput();
+                alert('تمت إضافة البرفان بنجاح!');
+            } catch (err) {
+                alert('حدث خطأ أثناء الإضافة: ' + err.message);
+            }
+        });
+
+        // Load Perfumes Real-time
+        const qPerfumes = query(collection(db, "perfumes"), orderBy("createdAt", "desc"));
+        onSnapshot(qPerfumes, (snapshot) => {
+            const grid = document.getElementById('perfumeGrid');
+            grid.innerHTML = '';
+
+            if (snapshot.empty) {
+                grid.innerHTML = '<div class="empty-msg">لا توجد عطور مضافة حالياً. قم بإضافة برفان كأدمن لتظهر هنا.</div>';
+                return;
+            }
+
+            snapshot.forEach((docSnap) => {
+                const data = docSnap.data();
+                const card = document.createElement('div');
+                card.className = 'perfume-card';
+                card.innerHTML = `
+                    <div class="perfume-img-wrapper">
+                        <img src="${data.imgUrl}" class="perfume-img" alt="${data.name}" onerror="this.src='https://via.placeholder.com/300x300?text=Y%26K+Perfume'">
+                    </div>
+                    <div class="perfume-details">
+                        <h3 class="perfume-title">${data.name}</h3>
+                        <div class="perfume-actions">
+                            <button class="btn btn-gold" style="width:100%; justify-content:center;" onclick="openBuyModal('${docSnap.id}', '${data.name}')">اشتري الآن</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        });
+
+        // Buy Modal Trigger
+        window.openBuyModal = (id, name) => {
+            document.getElementById('buyPerfumeId').value = id;
+            document.getElementById('buyPerfumeTitle').innerText = name;
+            openModal('buyModal');
+        };
+
+        // Submit Purchase Order
+        document.getElementById('buyForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const perfumeId = document.getElementById('buyPerfumeId').value;
+            const perfumeName = document.getElementById('buyPerfumeTitle').innerText;
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const address = document.getElementById('customerAddress').value;
+
+            try {
+                await addDoc(collection(db, "orders"), {
+                    perfumeId,
+                    perfumeName,
+                    customerName: name,
+                    customerPhone: phone,
+                    customerAddress: address,
+                    createdAt: serverTimestamp()
+                });
+
+                closeModal('buyModal');
+                document.getElementById('buyForm').reset();
+                alert('تم إرسال طلب الشراء للأدمن بنجاح! سيتم التواصل معك قريباً.');
+            } catch (err) {
+                alert('حدث خطأ أثناء إرسال الطلب: ' + err.message);
+            }
+        });
+
+        // Admin Real-time Orders Listener
+        function listenToOrders() {
+            const qOrders = query(collection(db, "orders"), orderBy("createdAt", "desc"));
+            onSnapshot(qOrders, (snapshot) => {
+                const badge = document.getElementById('msgBadge');
+                const list = document.getElementById('adminMessagesList');
+                badge.innerText = snapshot.size;
+
+                if (snapshot.empty) {
+                    list.innerHTML = '<p style="text-align: center; color: var(--text-muted);">لا توجد رسائل طلبات جديدة.</p>';
+                    return;
+                }
+
+                list.innerHTML = '';
+                snapshot.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    const item = document.createElement('div');
+                    item.className = 'message-item';
+                    item.innerHTML = `
+                        <h4>طلب شراء: ${data.perfumeName || 'عطر'}</h4>
+                        <p><strong>اسم العميل:</strong> ${data.customerName}</p>
+                        <p><strong>رقم الهاتف:</strong> ${data.customerPhone}</p>
+                        <p><strong>العنوان:</strong> ${data.customerAddress}</p>
+                    `;
+                    list.appendChild(item);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
